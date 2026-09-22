@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-950 font-sans text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Omar Zurita - Tarjeta Digital joimax®</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,600;0,900;1,600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            dark: '#0a192f',
+                            card: '#112240',
+                            accent: '#0066cc',
+                            cyan: '#64ffda',
+                            lightBlue: '#38bdf8',
+                            border: '#233554'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0a192f; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(17, 34, 64, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(100, 255, 218, 0.15);
+        }
+        
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px -5px rgba(0, 102, 204, 0.3);
+            border-color: rgba(100, 255, 218, 0.4);
+        }
+
+        /* Ajuste de ancho del logo */
+        .zero-systems-svg {
+            width: 200px;
+            max-width: 100%;
+        }
+        @media (min-width: 640px) {
+            .zero-systems-svg {
+                width: 230px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-medical-accent selection:text-white">
+
+    <!-- Header Fijo -->
+    <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
+        <div class="max-w-6xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <!-- LOGO MAVA -->
+                <a href="https://www.mava.com.mx/" target="_blank" rel="noopener font-black" class="h-10 sm:h-12 px-3 py-1 bg-white rounded-xl flex items-center justify-center shadow-lg border border-slate-200 flex-shrink-0 transition transform hover:scale-105 active:scale-95 group">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900 font-sans">MAVA</span>
+                        <div class="flex flex-col border-l border-slate-300 pl-1.5 text-left leading-none">
+                            <span class="text-[9px] sm:text-[10px] font-black tracking-wider text-blue-700 uppercase">SOLUCIÓN</span>
+                            <span class="text-[8px] sm:text-[9px] font-extrabold tracking-wider text-emerald-600 uppercase">REAL</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <div class="truncate">
+                    <h1 class="text-xs sm:text-sm font-black text-white tracking-tight leading-none truncate">OMAR ZURITA</h1>
+                    <p class="text-[10px] sm:text-[11px] font-semibold text-medical-cyan truncate">Comercializadora Médica MAVA</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-shrink-0">
+                <button onclick="downloadVCard()" class="px-3 py-2 sm:px-4 sm:py-2.5 bg-medical-accent hover:bg-blue-600 text-white text-xs font-bold rounded-xl shadow-lg flex items-center gap-2 transition active:scale-95">
+                    <i class="fa-solid fa-vcard text-sm"></i>
+                    <span class="hidden sm:inline">Guardar Contacto</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-4 py-4 sm:py-6 space-y-6 sm:space-y-8">
+
+        <!-- Perfil y Datos Principales -->
+        <section class="glass-panel rounded-2xl sm:rounded-3xl p-4 sm:p-8 relative overflow-hidden shadow-2xl border border-slate-800">
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
+                
+                <!-- Avatar & Certificado -->
+                <div class="lg:col-span-4 flex flex-col items-center text-center">
+                    <div class="relative">
+                        <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl p-1 bg-gradient-to-b from-cyan-400 via-blue-600 to-slate-900 shadow-2xl flex items-center justify-center overflow-hidden">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmxmuVxr7jRTFecg2LLSWVQa_7tNt8PKzwZHy1HJvWk8RLZv43_jf65Q0&s=10" 
+                                 onerror="this.src='https://placehold.co/300x300/112240/64ffda?text=Omar+Zurita'" 
+                                 alt="Omar Zurita" class="w-full h-full object-cover rounded-[22px]">
+                        </div>
+                        <span class="absolute bottom-2 right-2 bg-emerald-500 border-2 border-slate-900 w-4 h-4 sm:w-5 sm:h-5 rounded-full" title="Disponible para Atención Comercial"></span>
+                    </div>
+
+                    <div class="mt-4 bg-slate-900/90 border border-medical-border rounded-2xl p-2.5 sm:p-3 w-full max-w-xs shadow-md flex items-center gap-3">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg sm:text-xl flex-shrink-0">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <div class="text-left text-xs">
+                            <p class="text-[9px] sm:text-[10px] uppercase font-bold text-slate-400">Certificado por</p>
+                            <p class="font-extrabold text-white text-xs sm:text-sm">joimax® GmbH <span class="text-xs">🇩🇪</span></p>
+                            <p class="text-[9px] sm:text-[10px] text-medical-cyan">Ventas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalles e Interacción -->
+                <div class="lg:col-span-8 space-y-4 sm:space-y-5">
+                    <div class="space-y-1.5 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-medical-cyan text-[11px] sm:text-xs font-semibold">
+                            <i class="fa-solid fa-briefcase"></i> Asesoría Comercial y Ventas Especializadas
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">
+                            OMAR ZURITA
+                        </h2>
+                        <p class="text-sm sm:text-lg font-bold text-slate-300">
+                            VENTAS
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-2xl">
+                            Atención comercial especializada en equipos y soluciones para cirugía endoscópica de columna con tecnología joimax®. Asesoramiento integral, distribución de tecnología médica y cotizaciones de equipamiento.
+                        </p>
+                    </div>
+
+                    <!-- Botones de Contacto -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+                        <a href="tel:+525569161229" class="flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 transition active:scale-95 group">
+                            <i class="fa-solid fa-phone text-emerald-400 text-base sm:text-lg mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-[9px] sm:text-[10px] text-slate-400">Llamar</span>
+                            <span class="text-[11px] sm:text-xs font-bold text-white truncate max-w-full">+52 55 6916 1229</span>
+                        </a>
+
+                        <a href="https://wa.me/525569161229?text=Hola%20Omar,%20requiero%20información%20comercial%20de%20joimax" target="_blank" class="flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-emerald-400/50 transition active:scale-95 group">
+                            <i class="fa-brands fa-whatsapp text-emerald-500 text-base sm:text-lg mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-[9px] sm:text-[10px] text-slate-400">WhatsApp</span>
+                            <span class="text-[11px] sm:text-xs font-bold text-white truncate">Enviar Mensaje</span>
+                        </a>
+
+                        <a href="mailto:omarzurita@mava.com.mx" class="flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-medical-accent/50 transition active:scale-95 group">
+                            <i class="fa-solid fa-envelope text-medical-cyan text-base sm:text-lg mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-[9px] sm:text-[10px] text-slate-400">Correo</span>
+                            <span class="text-[11px] sm:text-xs font-bold text-white truncate max-w-full">omarzurita@mava.com.mx</span>
+                        </a>
+
+                        <a href="https://www.linkedin.com" target="_blank" class="flex flex-col items-center justify-center p-2.5 sm:p-3 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-blue-400/50 transition active:scale-95 group">
+                            <i class="fa-brands fa-linkedin text-blue-400 text-base sm:text-lg mb-1 group-hover:scale-110 transition"></i>
+                            <span class="text-[9px] sm:text-[10px] text-slate-400">Perfil Profesional</span>
+                            <span class="text-[11px] sm:text-xs font-bold text-white truncate">LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Titular de Catálogo de Productos con Botón Desplegable Generales -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-3">
+            <div>
+                <button onclick="toggleAllSections()" class="text-xl sm:text-2xl font-black text-white flex items-center gap-2 hover:text-medical-cyan transition text-left focus:outline-none">
+                    <i class="fa-solid fa-grip text-medical-cyan"></i>
+                    <span>Catálogo de Productos joimax®</span>
+                    <i id="mainCatalogChevron" class="fa-solid fa-chevron-down text-sm text-slate-400 transition-transform duration-300 ml-1"></i>
+                </button>
+                <p class="text-xs text-slate-400 mt-1">Haz clic en el título o presiona una sección individual para expandir el contenido.</p>
+            </div>
+            
+            <button onclick="toggleAllSections()" id="toggleAllBtn" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs text-medical-cyan font-bold rounded-xl transition self-start sm:self-auto flex items-center gap-2">
+                <i class="fa-solid fa-folder-open"></i>
+                <span id="toggleAllBtnText">Desplegar Todo</span>
+            </button>
+        </div>
+
+        <!-- Catálogo Dinámico en Cuadrícula -->
+        <section id="catalogContainer" class="space-y-6">
+            <!-- Renderizado dinámico vía JavaScript -->
+        </section>
+
+    </main>
+
+    <!-- Modal Detalle del Producto y Variantes -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-900 w-full max-w-3xl rounded-2xl sm:rounded-3xl border border-slate-700 shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 flex flex-col max-h-[92vh]" id="modalContent">
+            
+            <div class="px-4 sm:px-6 py-4 bg-slate-800 border-b border-slate-700 flex items-center justify-between">
+                <div class="flex items-center space-x-3 truncate pr-2">
+                    <div id="modalIcon" class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-xl text-medical-cyan flex-shrink-0">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <div class="truncate">
+                        <span id="modalCategoryBadge" class="text-[10px] uppercase font-black tracking-wider text-medical-cyan block truncate"></span>
+                        <h3 id="modalTitle" class="text-base sm:text-xl font-black text-white leading-tight truncate"></h3>
+                    </div>
+                </div>
+                <button onclick="closeProductModal()" class="w-9 h-9 rounded-full bg-slate-700 hover:bg-slate-600 text-slate-300 flex items-center justify-center transition flex-shrink-0">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-6 flex-1 text-slate-300 text-xs sm:text-sm">
+                <!-- Imagen Destacada Principal/Variante -->
+                <div class="relative group">
+                    <div id="modalImageContainer" class="w-full h-48 sm:h-64 rounded-2xl bg-slate-950 border border-slate-800 p-4 flex items-center justify-center overflow-hidden">
+                        <img id="modalImage" src="" alt="joimax product" class="max-h-full max-w-full object-contain filter drop-shadow-xl transition-transform duration-300 group-hover:scale-105" />
+                    </div>
+                    <div id="modalImageBadge" class="absolute bottom-3 right-3 bg-slate-900/90 text-medical-cyan text-[10px] font-bold px-3 py-1 rounded-full border border-slate-700 shadow-md">
+                        Imagen de Producto
+                    </div>
+                </div>
+
+                <p id="modalDescription" class="leading-relaxed text-slate-300 border-b border-slate-800 pb-4 text-xs sm:text-sm"></p>
+
+                <!-- Sección de Sub-productos / Variantes Interactivas con Imágenes -->
+                <div id="modalSubproductsSection" class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-medical-cyan flex items-center gap-2">
+                            <i class="fa-solid fa-sitemap"></i> Variantes e Instrumental (Toca para inspeccionar)
+                        </h4>
+                    </div>
+                    <div id="modalSubproductsList" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Items renderizados dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Indicaciones Clínicas -->
+                <div id="modalIndicationsSection" class="space-y-2.5">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-notes-medical"></i> Aplicaciones e Indicaciones Clínicas
+                    </h4>
+                    <ul id="modalIndicationsList" class="flex flex-wrap gap-1.5">
+                        <!-- Items renderizados dinámicamente -->
+                    </ul>
+                </div>
+
+                <div class="p-3 bg-blue-950/40 border border-blue-800/40 rounded-xl text-[11px] sm:text-xs text-slate-400 flex items-start gap-2">
+                    <i class="fa-solid fa-shield-halved text-medical-cyan text-sm mt-0.5 flex-shrink-0"></i>
+                    <span>Atención comercial, cotizaciones y ventas directa por <strong>Omar Zurita</strong>.</span>
+                </div>
+            </div>
+
+            <div class="px-4 sm:px-6 py-3 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-[11px] sm:text-xs text-slate-500">
+                <span>joimax® GmbH • Endoscopic Spine</span>
+                <button onclick="closeProductModal()" class="px-4 py-2 bg-medical-accent hover:bg-blue-600 text-white font-bold rounded-xl transition">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto py-8 bg-slate-950 border-t border-slate-900 flex justify-center items-center">
+        <div class="footer-credits flex flex-col items-center gap-2 text-center">
+            <span class="text-xs font-medium text-slate-500 uppercase tracking-widest">created by</span>
+            <a href="https://j05ulr.github.io/ZeroSystems/" target="_blank" rel="noopener noreferrer" class="zero-systems-logo inline-block transition-transform hover:scale-105 opacity-80 hover:opacity-100">
+                <svg class="zero-systems-svg" viewBox="0 0 540 120" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="#FFFFFF">
+                        <path d="M20,65 L110,65 C125,65 130,58 135,48 L142,32 C145,25 140,20 128,20 L40,20 C25,20 20,27 15,37 L8,52 C5,59 10,65 20,65 Z" />
+                        <path d="M50,95 L140,95 C155,95 160,88 165,78 L172,62 C175,55 170,50 158,50 L70,50 C55,50 50,57 45,67 L38,82 C35,89 40,95 50,95 Z" />
+                        <path d="M140,15 L52,105" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                    </g>
+                    <text x="180" y="62" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="900" font-size="40" fill="#FFFFFF" letter-spacing="3">ZERO SYSTEMS</text>
+                    <text x="183" y="94" font-family="'Montserrat', sans-serif" font-weight="600" font-style="italic" font-size="22" fill="#E0E0E0" letter-spacing="8">CERO LÍMITES</text>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const catalogData = [
+            {
+                sectionId: 'sec-tecnicas',
+                sectionTitle: '1. TÉCNICAS Y SISTEMAS ENDOSCÓPICOS',
+                sectionSubtitle: 'Sistemas de acceso mínimamente invasivo a la columna vertebral',
+                items: [
+                    {
+                        id: 'tessys',
+                        title: 'TESSYS®',
+                        code: 'TRANSFORAMINAL',
+                        subtitle: 'Acceso Transforaminal',
+                        icon: 'fa-bone',
+                        img: 'https://www.joimax.com/wp-content/uploads/2020/09/TESSYS_Product.png',
+                        description: 'Acceso lateral directo a través del foramen intervertebral (Triángulo de Kambin). Permite la descompresión precisa de hernias discales y estenosis sin desestabilizar la estructura vertebral.',
+                        subproducts: [
+                            { 
+                                id: 'tessys-std',
+                                name: 'TESSYS® Std', 
+                                desc: 'Sistema estándar con juego de dilatadores secuenciales y reamers para foraminoplastia.',
+                                img: 'https://www.joimax.com/wp-content/uploads/2020/09/TESSYS_Product.png'
+                            },
+                            { 
+                                id: 'tessys-xt',
+                                name: 'TESSYS® XT', 
+                                desc: 'Instrumental de longitud extendida adaptado para abordar canal lumbar en pacientes con anatomías complejas u obesidad.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=TESSYS%C2%AE+XT'
+                            },
+                            { 
+                                id: 'tessys-thx',
+                                name: 'TESSYS® Thx', 
+                                desc: 'Set especializado para abordajes en la región torácica de la columna.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=TESSYS%C2%AE+Thx'
+                            },
+                            { 
+                                id: 'tessys-transsap',
+                                name: 'TESSYS® TransSAP', 
+                                desc: 'Técnica de resecado directo del proceso articular superior (SAP) para estenosis foraminal severa.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=TESSYS%C2%AE+TransSAP'
+                            }
+                        ],
+                        indications: ['Hernia discal lumbar', 'Estenosis foraminal', 'Estenosis recesal']
+                    },
+                    {
+                        id: 'ilessys',
+                        title: 'iLESSYS®',
+                        code: 'INTERLAMINAR',
+                        subtitle: 'Acceso Interlaminar',
+                        icon: 'fa-layer-group',
+                        img: 'https://www.joimax.com/wp-content/uploads/2020/09/iLESSYS_Product.png',
+                        description: 'Acceso posterior interlaminar ideal para la descompresión directa del canal central, recesos laterales y tratamiento de ligamento amarillo con técnica Over-the-Top.',
+                        subproducts: [
+                            { 
+                                id: 'ilessys-std',
+                                name: 'iLESSYS® Standard', 
+                                desc: 'Cánulas y endoscopios para descompresión interlaminar directa de hernias centrales.',
+                                img: 'https://www.joimax.com/wp-content/uploads/2020/09/iLESSYS_Product.png'
+                            },
+                            { 
+                                id: 'ilessys-pro',
+                                name: 'iLESSYS® Pro', 
+                                desc: 'Set avanzado para descompresión contralateral (ULBD) preservando la anatomía posterior.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=iLESSYS%C2%AE+Pro'
+                            },
+                            { 
+                                id: 'ilessys-delta',
+                                name: 'iLESSYS® Delta', 
+                                desc: 'Endoscopio de gran canal de trabajo (6 mm) para estenosis central severa y preparación de fusión.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=iLESSYS%C2%AE+Delta'
+                            },
+                            { 
+                                id: 'ilessys-biportal',
+                                name: 'iLESSYS® Biportal', 
+                                desc: 'Solución optimizada e instrumental para técnicas biportales (UBE).',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=iLESSYS%C2%AE+Biportal'
+                            }
+                        ],
+                        indications: ['Hernia discal posterior', 'Estenosis central', 'ULBD']
+                    },
+                    {
+                        id: 'multizyte',
+                        title: 'MultiZYTE®',
+                        code: 'DOLOR',
+                        subtitle: 'Terapia del Dolor Facetario y SI',
+                        icon: 'fa-wave-square',
+                        img: 'https://www.joimax.com/wp-content/uploads/2020/09/MultiZYTE_Product.png',
+                        description: 'Tratamiento endoscópico directo sobre articulaciones facetarias y sacroilíacas. Permite la denervación por radiofrecuencia y la liberación de la cápsula articular.',
+                        subproducts: [
+                            { 
+                                id: 'multizyte-facet-lumbar',
+                                name: 'MultiZYTE® Facet Lumbar', 
+                                desc: 'Instrumental fino para denervación de la rama media del nervio espinal a nivel lumbar.',
+                                img: 'https://www.joimax.com/wp-content/uploads/2020/09/MultiZYTE_Product.png'
+                            },
+                            { 
+                                id: 'multizyte-facet-cervical',
+                                name: 'MultiZYTE® Facet Cervical', 
+                                desc: 'Micro-instrumental diseñado específicamente para articulaciones facetarias cervicales.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=MultiZYTE%C2%AE+Cervical'
+                            },
+                            { 
+                                id: 'multizyte-si',
+                                name: 'MultiZYTE® Sacroiliac', 
+                                desc: 'Acceso directo a la articulación sacroilíaca para desbridamiento y denervación en dolor crónico.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=MultiZYTE%C2%AE+Sacroiliac'
+                            }
+                        ],
+                        indications: ['Síndrome facetario', 'Dolor lumbar axial', 'Dolor sacroilíaco']
+                    },
+                    {
+                        id: 'intents',
+                        title: 'intENTS®',
+                        code: 'INTRADISCAL',
+                        subtitle: 'Terapia Intradiscal',
+                        icon: 'fa-bullseye',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=intENTS%C2%AE',
+                        description: 'Abordaje mínimamente invasivo para descompresión intradiscal y modulación térmica del núcleo pulposo en discopatías dolorosas.',
+                        subproducts: [
+                            { 
+                                id: 'intents-lumbar',
+                                name: 'intENTS® Lumbar', 
+                                desc: 'Cánulas intradiscales lumbares con electrodos de coagulación de amplio alcance.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=intENTS%C2%AE+Lumbar'
+                            },
+                            { 
+                                id: 'intents-cervical',
+                                name: 'intENTS® Cervical', 
+                                desc: 'Cánulas ultra delgadas para descompresión cervical percutánea.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=intENTS%C2%AE+Cervical'
+                            }
+                        ],
+                        indications: ['Dolor discogénico', 'Protrusión discal', 'Desgarro anular']
+                    },
+                    {
+                        id: 'endolif',
+                        title: 'EndoLIF®',
+                        code: 'FUSIÓN',
+                        subtitle: 'Fusión Intersomática Endoscópica',
+                        icon: 'fa-cubes',
+                        img: 'https://www.joimax.com/wp-content/uploads/2020/09/EndoLIF_Product.png',
+                        description: 'Sistema para colocación de cajas intersomáticas por vía endoscópica transforaminal u oblicua, logrando fusión sólida con mínima agresión a tejidos suaves.',
+                        subproducts: [
+                            { 
+                                id: 'endolif-on-cage',
+                                name: 'EndoLIF® O-Cage', 
+                                desc: 'Caja intersomática de titanio impreso en 3D para abordaje oblicuo.',
+                                img: 'https://www.joimax.com/wp-content/uploads/2020/09/EndoLIF_Product.png'
+                            },
+                            { 
+                                id: 'endolif-delta-cage',
+                                name: 'EndoLIF® Delta Cage', 
+                                desc: 'Dispositivo intersomático expandible para nivel L5-S1 e inserción guiada por endoscopio.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=EndoLIF%C2%AE+Delta+Cage'
+                            }
+                        ],
+                        indications: ['Inestabilidad lumbar', 'Espondilolistesis Grado I-II', 'Fusión intersomática']
+                    },
+                    {
+                        id: 'percusys',
+                        title: 'PERCUSYS® PLUS',
+                        code: 'FIJACIÓN',
+                        subtitle: 'Estabilización Percutánea',
+                        icon: 'fa-screwdriver-wrench',
+                        img: 'https://www.joimax.com/wp-content/uploads/2020/09/Percusys_Product.png',
+                        description: 'Sistema de fijación percutánea con tornillos pediculares cannulados y barras percurvadas para estabilidad rígida o semi-rígida de la columna.',
+                        subproducts: [
+                            { 
+                                id: 'percusys-screws',
+                                name: 'Tornillos Pediculares PERCUSYS®', 
+                                desc: 'Tornillos poliaxiales cannulados con rosca de doble paso e introductor integrado.',
+                                img: 'https://www.joimax.com/wp-content/uploads/2020/09/Percusys_Product.png'
+                            },
+                            { 
+                                id: 'percusys-rods',
+                                name: 'Barras Precurvadas de Titanio', 
+                                desc: 'Barras con contorno lordótico óptimo e inserción subfascial guiada.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=PERCUSYS%C2%AE+Barras'
+                            }
+                        ],
+                        indications: ['Inestabilidad mecánica', 'Trauma vertebral', 'Soporte post-fusión']
+                    }
+                ]
+            },
+            {
+                sectionId: 'sec-torre',
+                sectionTitle: '2. TORRE DE CONTROL NAVENTO®',
+                sectionSubtitle: 'Consolas de procesamiento, visualización 4K, radiofrecuencia y fresado',
+                items: [
+                    {
+                        id: 'vitegra',
+                        title: 'VITEGRA®',
+                        code: 'NAVENTO',
+                        subtitle: 'Documentación y Control',
+                        icon: 'fa-compact-disc',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=VITEGRA%C2%AE',
+                        description: 'Unidad centralizada de control con pantalla táctil dual, procesamiento de video HD/4K e integración total con PACS y redes hospitalarias.',
+                        subproducts: [
+                            { 
+                                id: 'vitegra-docu',
+                                name: 'Vitegra® Docu', 
+                                desc: 'Módulo de captura de imagen y video 4K en tiempo real con exportación instantánea.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Vitegra%C2%AE+Docu'
+                            },
+                            { 
+                                id: 'vitegra-command',
+                                name: 'Vitegra® Command', 
+                                desc: 'Interfaz de control maestro para periféricos de la Torre NAVENTO®.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Vitegra%C2%AE+Command'
+                            }
+                        ],
+                        indications: ['Gestión de video quirúrgico', 'Documentación PACS/DICOM']
+                    },
+                    {
+                        id: 'camsource',
+                        title: 'CAMSOURCE® 4K',
+                        code: 'NAVENTO',
+                        subtitle: 'Cámara 4K + Luz LED',
+                        icon: 'fa-video',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=CAMSOURCE%C2%AE+4K',
+                        description: 'Consola combo de alta definición con fuente de luz fría LED integrada y sensor 4K de alta fidelidad de color para estructuras nerviosas.',
+                        subproducts: [
+                            { 
+                                id: 'camsource-led',
+                                name: 'Camsource® LED 4K Console', 
+                                desc: 'Consola con fuente LED de larga duración y calibración automática de blancos.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=CAMSOURCE%C2%AE+Console'
+                            },
+                            { 
+                                id: 'camsource-head',
+                                name: 'Cabezal de Cámara 4K', 
+                                desc: 'Cabezal ergonómico autoclavable con botones configurables de zoom y captura.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Cabezal+C%C3%A1mara+4K'
+                            }
+                        ],
+                        indications: ['Visualización endoscópica de alta precisión']
+                    },
+                    {
+                        id: 'intracs',
+                        title: 'INTRACS® EM',
+                        code: 'NAVENTO',
+                        subtitle: 'Navegación Electromagnética',
+                        icon: 'fa-location-crosshairs',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=INTRACS%C2%AE+EM',
+                        description: 'Sistema de navegación electromagnética continua para el seguimiento en tiempo real de instrumentación y ópticas dentro del canal espinal.',
+                        subproducts: [
+                            { 
+                                id: 'intracs-console',
+                                name: 'Consola INTRACS® EM', 
+                                desc: 'Procesador de campos electromagnéticos para seguimiento espacial 3D.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Consola+INTRACS%C2%AE'
+                            },
+                            { 
+                                id: 'intracs-needles',
+                                name: 'Agujas y Cánulas Navegadas', 
+                                desc: 'Sensores EM integrados en la punta para alineación sin exposición fluoroscópica continua.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Agujas+Navegadas'
+                            }
+                        ],
+                        indications: ['Precisión en acceso foraminal', 'Reducción de radiación']
+                    },
+                    {
+                        id: 'shrill',
+                        title: 'SHRILL®',
+                        code: 'NAVENTO',
+                        subtitle: 'Motor de Fresado Óseo',
+                        icon: 'fa-dharmachakra',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=SHRILL%C2%AE',
+                        description: 'Consola y motor de alta velocidad con reverso automático para el resecado rápido y seguro de tejido óseo y ligamentario.',
+                        subproducts: [
+                            { 
+                                id: 'shrill-console',
+                                name: 'Consola Motor Shrill®', 
+                                desc: 'Unidad de potencia programable con pedal multifunción.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Consola+Shrill%C2%AE'
+                            },
+                            { 
+                                id: 'shrill-blades',
+                                name: 'Shrill® Shaver Blades', 
+                                desc: 'Fresas diamantadas, de corte y brocas de foraminoplastia de varios diámetros.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Shrill%C2%AE+Blades'
+                            }
+                        ],
+                        indications: ['Foraminoplastia', 'Laminotomía', 'Resección de osteofitos']
+                    },
+                    {
+                        id: 'endovapor',
+                        title: 'ENDOVAPOR® 2',
+                        code: 'NAVENTO',
+                        subtitle: 'Generador de Radiofrecuencia (RF)',
+                        icon: 'fa-bolt',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=ENDOVAPOR%C2%AE+2',
+                        description: 'Generador multifuncional bipolar y monopolar especializado en electrohemostasia efectiva, shrinking discal y ablación tisular en medio salino.',
+                        subproducts: [
+                            { 
+                                id: 'vaporflex',
+                                name: 'Vaporflex® Probes', 
+                                desc: 'Electrodos de radiofrecuencia articulados con punta orientable.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Vaporflex%C2%AE'
+                            },
+                            { 
+                                id: 'vaporace',
+                                name: 'Vaporace® / Legato®', 
+                                desc: 'Sondas polares rígidas para ablación rápida y control hemostático.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Vaporace%C2%AE'
+                            }
+                        ],
+                        indications: ['Hemostasia intracanular', 'Modulación del anillo discal', 'Ablación de tejido']
+                    },
+                    {
+                        id: 'versicon',
+                        title: 'VERSICON®',
+                        code: 'NAVENTO',
+                        subtitle: 'Bomba de Irrigación de Alta Capacidad',
+                        icon: 'fa-droplet',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=VERSICON%C2%AE',
+                        description: 'Bomba de irrigación continua con control automático de flujo y presión regulada para mantener el campo visual claro en todo momento.',
+                        subproducts: [
+                            { 
+                                id: 'versicon-unit',
+                                name: 'Bomba VERSICON®', 
+                                desc: 'Unidad de irrigación con sensores de presión intra-canal.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Bomba+Versicon%C2%AE'
+                            },
+                            { 
+                                id: 'versicon-tubing',
+                                name: 'Tubuladura Esterilizable', 
+                                desc: 'Set de mangueras de doble vía con conectores de acople rápido.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Tubuladura+Versicon%C2%AE'
+                            }
+                        ],
+                        indications: ['Irrigación continua', 'Control de presión hidráulica']
+                    }
+                ]
+            },
+            {
+                sectionId: 'sec-endoscopios',
+                sectionTitle: '3. ÓPTICAS, SOPORTES Y CAPACITACIÓN',
+                sectionSubtitle: 'Endoscopios de trabajo, soporte robótico y simuladores anatómicos',
+                items: [
+                    {
+                        id: 'endoscopes',
+                        title: 'ENDOSCOPIOS JOIMAX®',
+                        code: 'ÓPTICAS',
+                        subtitle: 'Ópticas HD de Canal Integrado',
+                        icon: 'fa-eye',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=%C3%93pticas+joimax%C2%AE',
+                        description: 'Ópticas de alta resolución con canal de trabajo eccéntrico integrado y diferentes ángulos de visión para una exploración óptima.',
+                        subproducts: [
+                            { 
+                                id: 'foraminoscopes',
+                                name: 'FORAMINOSCOPES®', 
+                                desc: 'Ópticas diseñadas para acceso transforaminal TESSYS®.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=FORAMINOSCOPE%C2%AE'
+                            },
+                            { 
+                                id: 'laminoscopes',
+                                name: 'LAMINOSCOPES®', 
+                                desc: 'Ópticas de gran canal diseñadas para abordaje interlaminar iLESSYS®.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=LAMINOSCOPE%C2%AE'
+                            },
+                            { 
+                                id: 'nucleoscopes',
+                                name: 'NUCLEOSCOPES®', 
+                                desc: 'Endoscopios ultradelgados para procedimientos intradiscales.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=NUCLEOSCOPE%C2%AE'
+                            }
+                        ],
+                        indications: ['Visualización intracanular directa']
+                    },
+                    {
+                        id: 'robofix',
+                        title: 'ROBOFIX®',
+                        code: 'SOPORTE',
+                        subtitle: 'Brazo de Sujeción Robótica',
+                        icon: 'fa-robot',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=ROBOFIX%C2%AE',
+                        description: 'Brazo articulado electromecánico de alta fijación que sostiene el endoscopio permitiendo la ejecución de técnicas a dos manos.',
+                        subproducts: [
+                            { 
+                                id: 'robofix-arm',
+                                name: 'Brazo Articulado RoboFIX®', 
+                                desc: 'Sujeción estable con liberación por pedal ergonómico.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Brazo+RoboFIX%C2%AE'
+                            }
+                        ],
+                        indications: ['Soporte óptico bimanual']
+                    },
+                    {
+                        id: 'simulators',
+                        title: 'SIMULADORES SURGICAL',
+                        code: 'ENTRENAMIENTO',
+                        subtitle: 'Modelos Anatómicos de Capacitación',
+                        icon: 'fa-graduation-cap',
+                        img: 'https://placehold.co/500x350/112240/64ffda?text=Simuladores+joimax%C2%AE',
+                        description: 'Modelos de simulación quirúrgica en seco con densidad hística táctil realista para práctica de accesos TESSYS® e iLESSYS®.',
+                        subproducts: [
+                            { 
+                                id: 'sim-prono',
+                                name: 'Simulador Columna Lumbar Prono', 
+                                desc: 'Modelo sintético con respuesta radiológica para entrenamiento fluoroscópico.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Simulador+Prono'
+                            },
+                            { 
+                                id: 'sim-lateral',
+                                name: 'Simulador Transforaminal', 
+                                desc: 'Estructura anatómica detallada para referencias del triángulo de Kambin.',
+                                img: 'https://placehold.co/500x350/112240/64ffda?text=Simulador+Transforaminal'
+                            }
+                        ],
+                        indications: ['Capacitación técnica y workshops']
+                    }
+                ]
+            }
+        ];
+
+        let currentActiveItem = null;
+        let allExpanded = false;
+
+        function renderCatalogGrid() {
+            const container = document.getElementById('catalogContainer');
+            container.innerHTML = '';
+
+            catalogData.forEach((section, idx) => {
+                const secEl = document.createElement('div');
+                secEl.className = "bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden transition-all duration-300";
+
+                // Header desplegable para cada sección
+                secEl.innerHTML = `
+                    <button onclick="toggleSection('${section.sectionId}')" class="w-full px-4 sm:px-6 py-4 flex items-center justify-between bg-slate-900 hover:bg-slate-800/80 transition focus:outline-none text-left">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-3 h-3 rounded-full bg-medical-cyan flex-shrink-0"></span>
+                            <div>
+                                <h4 class="text-sm sm:text-base font-black text-white leading-tight">
+                                    ${section.sectionTitle}
+                                </h4>
+                                <p class="text-[11px] text-slate-400 font-normal mt-0.5">${section.sectionSubtitle}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 text-slate-400">
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-800 rounded-md border border-slate-700 hidden sm:inline-block">${section.items.length} productos</span>
+                            <i id="chevron-${section.sectionId}" class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    
+                    <div id="content-${section.sectionId}" class="hidden p-4 sm:p-5 border-t border-slate-800/80 bg-slate-950/50">
+                        <div id="grid-${section.sectionId}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(secEl);
+
+                // Llenar cuadrícula de items de la sección
+                const grid = document.getElementById(`grid-${section.sectionId}`);
+
+                section.items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "glass-panel rounded-2xl p-4 border border-slate-800 card-hover cursor-pointer flex flex-col justify-between group active:scale-[0.99] shadow-lg";
+                    card.onclick = () => openProductModal(item);
+
+                    card.innerHTML = `
+                        <div>
+                            <!-- Badge e Icono -->
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-500/20 text-medical-cyan border border-blue-500/30">
+                                    ${item.code}
+                                </span>
+                                <i class="fa-solid ${item.icon} text-slate-400 group-hover:text-medical-cyan transition text-sm"></i>
+                            </div>
+
+                            <!-- Imagen de Sección Principal -->
+                            <div class="w-full h-36 rounded-xl bg-slate-950 border border-slate-800/80 mb-3 overflow-hidden p-2 flex items-center justify-center relative">
+                                <img src="${item.img}" 
+                                     onerror="this.src='https://placehold.co/400x300/112240/64ffda?text=${encodeURIComponent(item.title)}'" 
+                                     alt="${item.title}" 
+                                     class="max-h-full max-w-full object-contain filter drop-shadow group-hover:scale-105 transition-transform duration-300">
+                                <span class="absolute bottom-1.5 right-1.5 bg-slate-900/90 text-[8px] font-bold text-slate-300 px-1.5 py-0.5 rounded border border-slate-700">
+                                    ${item.subproducts.length} variantes
+                                </span>
+                            </div>
+
+                            <h5 class="text-base font-black text-white group-hover:text-medical-cyan transition leading-tight mb-1">${item.title}</h5>
+                            <p class="text-xs font-semibold text-slate-400 mb-2">${item.subtitle}</p>
+                            <p class="text-[11px] text-slate-400 line-clamp-2 leading-relaxed mb-3">${item.description}</p>
+                        </div>
+
+                        <!-- Sub-productos vista previa corta -->
+                        <div>
+                            <div class="py-2 border-t border-slate-800/80 flex flex-wrap gap-1 mb-3">
+                                ${item.subproducts.map(sp => `
+                                    <span onclick="event.stopPropagation(); openVariantModal('${item.id}', '${sp.id}')" 
+                                          class="text-[9px] font-medium bg-slate-900 hover:bg-blue-900/50 hover:text-medical-cyan text-slate-300 px-2 py-0.5 rounded border border-slate-700/60 transition inline-block">
+                                        <i class="fa-solid fa-camera text-[8px] mr-1 text-slate-500"></i>${sp.name}
+                                    </span>
+                                `).join('')}
+                            </div>
+
+                            <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-medical-cyan font-bold">
+                                <span>Ver Información Completa</span>
+                                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition text-xs"></i>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            });
+        }
+
+        function toggleSection(sectionId) {
+            const content = document.getElementById(`content-${sectionId}`);
+            const chevron = document.getElementById(`chevron-${sectionId}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleAllSections() {
+            allExpanded = !allExpanded;
+            const btnText = document.getElementById('toggleAllBtnText');
+            const mainChevron = document.getElementById('mainCatalogChevron');
+
+            catalogData.forEach(section => {
+                const content = document.getElementById(`content-${section.sectionId}`);
+                const chevron = document.getElementById(`chevron-${section.sectionId}`);
+
+                if (allExpanded) {
+                    content.classList.remove('hidden');
+                    chevron.classList.add('rotate-180');
+                } else {
+                    content.classList.add('hidden');
+                    chevron.classList.remove('rotate-180');
+                }
+            });
+
+            if (allExpanded) {
+                btnText.innerText = "Colapsar Todo";
+                mainChevron.classList.add('rotate-180');
+            } else {
+                btnText.innerText = "Desplegar Todo";
+                mainChevron.classList.remove('rotate-180');
+            }
+        }
+
+        function openProductModal(item) {
+            currentActiveItem = item;
+
+            document.getElementById('modalTitle').innerText = item.title;
+            document.getElementById('modalCategoryBadge').innerText = item.code + ' • ' + item.subtitle;
+            document.getElementById('modalDescription').innerText = item.description;
+            document.getElementById('modalIcon').innerHTML = `<i class="fa-solid ${item.icon}"></i>`;
+            document.getElementById('modalImageBadge').innerText = 'Imagen General: ' + item.title;
+            
+            const imgEl = document.getElementById('modalImage');
+            imgEl.src = item.img;
+            imgEl.onerror = function() {
+                this.src = 'https://placehold.co/500x350/112240/64ffda?text=' + encodeURIComponent(item.title);
+            };
+
+            // Lista de variantes interactivas con imágenes
+            const subList = document.getElementById('modalSubproductsList');
+            subList.innerHTML = '';
+            item.subproducts.forEach(sub => {
+                const subEl = document.createElement('div');
+                subEl.className = "bg-slate-950 hover:bg-slate-900 p-2.5 rounded-xl border border-slate-800 hover:border-medical-accent/50 cursor-pointer transition flex items-center gap-3 group";
+                subEl.onclick = () => selectVariantView(sub);
+
+                subEl.innerHTML = `
+                    <div class="w-14 h-14 rounded-lg bg-slate-900 border border-slate-800 p-1 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                        <img src="${sub.img}" onerror="this.src='https://placehold.co/150x150/112240/64ffda?text=Img'" alt="${sub.name}" class="max-h-full max-w-full object-contain group-hover:scale-110 transition">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-bold text-xs text-white group-hover:text-medical-cyan transition truncate">${sub.name}</p>
+                        <p class="text-[10px] text-slate-400 line-clamp-2 mt-0.5 leading-tight">${sub.desc}</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-600 group-hover:text-medical-cyan pr-1"></i>
+                `;
+                subList.appendChild(subEl);
+            });
+
+            // Lista de indicaciones
+            const indList = document.getElementById('modalIndicationsList');
+            indList.innerHTML = '';
+            item.indications.forEach(ind => {
+                const badge = document.createElement('li');
+                badge.className = "px-2.5 py-1 bg-emerald-950/60 border border-emerald-800/60 text-emerald-400 rounded-lg text-[11px] font-semibold flex items-center gap-1";
+                badge.innerHTML = `<i class="fa-solid fa-check text-[9px]"></i> ${ind}`;
+                indList.appendChild(badge);
+            });
+
+            showModal();
+        }
+
+        function openVariantModal(itemId, variantId) {
+            let foundItem = null;
+            let foundVariant = null;
+
+            catalogData.forEach(sec => {
+                sec.items.forEach(i => {
+                    if (i.id === itemId) {
+                        foundItem = i;
+                        const v = i.subproducts.find(sp => sp.id === variantId);
+                        if (v) foundVariant = v;
+                    }
+                });
+            });
+
+            if (foundItem && foundVariant) {
+                openProductModal(foundItem);
+                selectVariantView(foundVariant);
+            }
+        }
+
+        function selectVariantView(variant) {
+            const imgEl = document.getElementById('modalImage');
+            imgEl.src = variant.img;
+            imgEl.onerror = function() {
+                this.src = 'https://placehold.co/500x350/112240/64ffda?text=' + encodeURIComponent(variant.name);
+            };
+
+            document.getElementById('modalImageBadge').innerText = 'Variante: ' + variant.name;
+            document.getElementById('modalDescription').innerHTML = `
+                <strong class="text-medical-cyan block mb-1">${variant.name}:</strong>
+                ${variant.desc}
+            `;
+            
+            // Scroll suave a la imagen
+            document.getElementById('modalImageContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function showModal() {
+            const modal = document.getElementById('productModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function downloadVCard() {
+            const vcardContent = `BEGIN:VCARD
+VERSION:3.0
+N:Zurita;Omar;;;
+FN:OMAR ZURITA
+TITLE:VENTAS
+ORG:Comercializadora Médica MAVA / joimax® GmbH
+TEL;TYPE=CELL:+525569161229
+EMAIL:omarzurita@mava.com.mx
+NOTE:Ventas y Asesoría Comercial en Cirugía Endoscópica de Columna.
+END:VCARD`;
+
+            const blob = new Blob([vcardContent], { type: 'text/vcard;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('download', 'Omar_Zurita_joimax.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        window.onload = function() {
+            renderCatalogGrid();
+        };
+    </script>
+</body>
+</html>
